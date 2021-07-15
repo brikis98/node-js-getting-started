@@ -10,3 +10,8 @@ npm-debug.log
 # Docker
 Dockerfile
 docker-compose.yml
+
+# Terraform / Terragrunt
+*.tfstate*
+.terragrunt-cache
+.terraform.lock.hcl
