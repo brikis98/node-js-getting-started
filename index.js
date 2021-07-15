@@ -5,14 +5,9 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL
+  connectionString: process.env.DATABASE_URL,
+  ssl: !process.env.DATABASE_URL.includes('localhost')
 });
-
-if (!process.env.DATABASE_URL.includes('localhost')) {
-  pool.ssl = {
-    rejectUnauthorized: false
-  }
-}
 
 const showTimes = () => {
   let result = '';
