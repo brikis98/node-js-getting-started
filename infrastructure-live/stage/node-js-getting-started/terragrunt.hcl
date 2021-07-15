@@ -30,7 +30,7 @@ locals {
 inputs = {
   service_name          = "node-js-getting-started"
   ecs_cluster_arn       = dependency.ecs_cluster.outputs.arn 
-  ecs_cluster_name      = "node_js_getting_started" # TODO: this should be an output var
+  ecs_cluster_name      = "node_js_getting_started" # TODO: this should be an output var: https://github.com/gruntwork-io/terraform-aws-service-catalog/issues/808
   launch_type           = "FARGATE"
   network_mode          = "awsvpc"
   
@@ -38,10 +38,10 @@ inputs = {
   task_memory             = 512
   desired_number_of_tasks = 1
 
-  # TODO: add support for default VPC in service catalog
+  # TODO: add support for default VPC in service catalog: https://github.com/gruntwork-io/terraform-aws-service-catalog/issues/809
   network_configuration = {
     subnets          = dependency.vpc.outputs.public_subnet_ids 
-    security_groups  = [dependency.vpc.outputs.fargate_sg_id] # TODO: no way to create SGs!!! So this is a VERY ugly hack.
+    security_groups  = [dependency.vpc.outputs.fargate_sg_id] # TODO: no way to create SGs!!! So this is a VERY ugly hack. https://github.com/gruntwork-io/terraform-aws-service-catalog/issues/810
     assign_public_ip = true
   }
 
