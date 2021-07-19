@@ -19,4 +19,7 @@ inputs = {
   num_days_after_which_delete_log_data  = 20
   http_listener_ports                   = ["80"]
   allow_inbound_from_cidr_blocks        = ["0.0.0.0/0"]
+
+  # Not something you should use in prod, but handy for testing / experimenting.
+  force_destroy = true
 }
